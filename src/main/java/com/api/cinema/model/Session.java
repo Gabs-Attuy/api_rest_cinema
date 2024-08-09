@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(nullable = false)
     private String language;
     @Column(nullable = false)

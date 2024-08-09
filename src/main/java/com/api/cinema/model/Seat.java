@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +16,7 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(nullable = false)
     private String seatNumber;
     @Column(nullable = false, name = "seat_row")

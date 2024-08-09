@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     private BigDecimal price;
     private Boolean isPaid;
     @ManyToOne
