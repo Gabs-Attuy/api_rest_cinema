@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.UUID;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
@@ -17,7 +15,7 @@ public class Credential {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)

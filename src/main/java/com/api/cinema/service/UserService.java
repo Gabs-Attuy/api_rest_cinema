@@ -25,7 +25,7 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
-    public ResponseEntity<User> createUser(UserDto dto) throws Exception {
+    public ResponseEntity<UserDto> createUser(UserDto dto) throws Exception {
         User user = new User(dto);
         userRepository.save(user);
         User id = userRepository.findById(user.getId()).orElseThrow(() -> new Exception("User not found!"));
@@ -36,6 +36,6 @@ public class UserService {
         credentialRepository.save(credential);
 
         emailService.sendActivityMail(dto.getEmail(), "E-mail Confirmation", "Click the link below to activate your account!");
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 }

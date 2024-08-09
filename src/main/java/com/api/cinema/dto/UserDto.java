@@ -1,5 +1,6 @@
 package com.api.cinema.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class UserDto {
     @NotBlank
     private String email;
     @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 }

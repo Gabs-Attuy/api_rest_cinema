@@ -1,7 +1,6 @@
 package com.api.cinema.controller;
 
 import com.api.cinema.dto.UserDto;
-import com.api.cinema.model.User;
 import com.api.cinema.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody @Valid UserDto dto) throws Exception {
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto dto) throws Exception {
         return userService.createUser(dto);
     }
 }

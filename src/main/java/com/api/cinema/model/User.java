@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
