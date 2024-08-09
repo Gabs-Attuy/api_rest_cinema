@@ -1,7 +1,6 @@
 package com.api.cinema.model;
 
 import com.api.cinema.key.OrderProductKey;
-import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
