@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
+import static com.api.cinema.model.Credential.encryptPassword;
+
 @Service
 public class UserService {
 
@@ -19,15 +22,20 @@ public class UserService {
     @Autowired
     private CredentialRepository credentialRepository;
 
-    public ResponseEntity<User> createUser(UserDto dto) {
+    @Autowired
+    private EmailService emailService;
+
+    public ResponseEntity<User> createUser(UserDto dto) throws Exception {
         User user = new User(dto);
         userRepository.save(user);
-
+        User id = userRepository.findById(user.getId()).orElseThrow(() -> new Exception("User not found!"));
         Credential credential = new Credential();
+        credential.setUserId(id);
         credential.setEmail(dto.getEmail());
-        credential.setPassword(dto.getPassword());
+        credential.setPassword(encryptPassword(dto.getPassword()));
         credentialRepository.save(credential);
 
+        emailService.sendActivityMail(dto.getEmail(), "E-mail Confirmation", "Click the link below to activate your account!");
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
