@@ -1,5 +1,6 @@
 package com.api.cinema.model;
 
+import com.api.cinema.dto.PopcornDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -15,4 +16,8 @@ public class Popcorn extends Product {
 
     @Column(nullable = false)
     private String flavor;
+
+    public Popcorn(PopcornDto dto) {
+        this.flavor = dto.getFlavor();
+    }
 }

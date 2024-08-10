@@ -36,6 +36,6 @@ public class UserService {
         credentialRepository.save(credential);
 
         emailService.sendActivityMail(dto.getEmail(), "E-mail Confirmation", "Click the link below to activate your account!");
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 }
