@@ -1,6 +1,7 @@
 package com.api.cinema.model;
 
 import com.api.cinema.dto.UserDto;
+import com.api.cinema.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String name;
@@ -23,6 +24,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String CPF;
     private String phone;
+    private UserStatus userStatus = UserStatus.PENDING;
     @OneToMany(mappedBy = "userId")
     private List<Order> orders;
 
