@@ -38,9 +38,8 @@ public class UserService {
         credential.setPassword(encryptPassword(dto.getPassword()));
         credentialRepository.save(credential);
 
-        emailService.sendActivityMail(dto.getEmail(), "Account Validation",
-                "This is your One-Time Passcode: " + otpService.generateOTP() + ".\n" +
-                "Validate your account in Website.");
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        emailService.sendActivityMail(dto.getEmail(), "Account Validation", "Validate your account with this OTP: " +
+                otpService.generateOTP() + ".\nThanks for your presence and preference!");
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 }
