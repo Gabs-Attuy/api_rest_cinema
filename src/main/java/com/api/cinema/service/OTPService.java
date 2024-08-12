@@ -16,7 +16,7 @@ public class OTPService {
     public OTPService() throws IOException {
     }
 
-    public static char[] OTP () {
+    public String generateOTP () {
         char[] otp = new char[length];
         Random r = new Random();
         for(int i = 0; i < length; i++){
@@ -24,7 +24,7 @@ public class OTPService {
                     r.nextInt(length)
             );
         }
-        return otp;
+        return new String(otp);
     }
 
     OkHttpClient client = new OkHttpClient();
