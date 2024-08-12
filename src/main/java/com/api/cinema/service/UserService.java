@@ -25,6 +25,9 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private OTPService otpService;
+
     public ResponseEntity<UserDto> createUser(UserDto dto) throws Exception {
         User user = new User(dto);
         userRepository.save(user);
@@ -35,7 +38,9 @@ public class UserService {
         credential.setPassword(encryptPassword(dto.getPassword()));
         credentialRepository.save(credential);
 
-        emailService.sendActivityMail(dto.getEmail(), "E-mail Confirmation", "Click the link below to activate your account!");
+        emailService.sendActivityMail(dto.getEmail(), "Account Validation",
+                "This is your One-Time Passcode: " + otpService.generateOTP() + ".\n" +
+                "Validate your account in Website.");
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 }
